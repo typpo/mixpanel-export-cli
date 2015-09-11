@@ -1,20 +1,23 @@
 {
-  "name": "mixpanel-data-export-cli",
+  "name": "mixpanel-export-cli",
   "version": "0.0.1",
-  "description": "CLI tool for exporting mixpanel data.",
+  "description": "CLI for exporting mixpanel data.",
   "main": "index.js",
   "dependencies": {
     "commander": "^2.8.1",
-    "mixpanel-data-export": "^1.8.2",
-    "nomnom": "^1.8.1"
+    "mixpanel-data-export": "^1.8.2"
   },
   "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "preferGlobal": true,
+  "bin": {
+    "mixpanel-export-cli": "index.js"
+  },
   "repository": {
     "type": "git",
-    "url": "https://github.com/typpo/mixpanel-data-export-cli.git"
+    "url": "https://github.com/typpo/mixpanel-export-cli.git"
   },
   "keywords": [
     "mixpanel",
@@ -24,6 +27,6 @@
   "author": "Ian Webster <ianw_npm@ianww.com> (http://ianww.com/)",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/typpo/mixpanel-data-export-cli/issues"
+    "url": "https://github.com/typpo/mixpanel-export-cli/issues"
   }
 }
