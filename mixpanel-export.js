@@ -6,15 +6,13 @@ var program = require('commander');
 var StringDecoder = require('string_decoder').StringDecoder;
 var MixpanelExport = require('mixpanel-data-export');
 
-function list(val) {
-  return val.split(',');
-}
-
 program
   .usage('--from <YYYY-MM-DD> --to <YYYY-MM-DD> --event <events> [options]')
   .option('-f, --from <YYYY-MM-DD>', 'From date (inclusive)')
   .option('-t, --to <YYYY-MM-DD>', 'To date (inclusive)')
-  .option('-e, --event <events>', 'Events that you wish to get data for, comma separated', list)
+  .option('-e, --event <events>', 'Events that you wish to get data for, comma separated', function(val) {
+    return val.split(',');
+  })
   .option('-w, --where [where]', 'An expression to filter events by (see Mixpanel expressions, https://goo.gl/IWaUH1)')
   .option('-b, --bucket [bucket]', 'The specific data bucket you would like to query')
   .option('-k, --key [key]', 'API key (defaults to env.MIXPANEL_API_KEY)')
@@ -61,5 +59,5 @@ stream.on('data', function(data) {
 });
 
 stream.on('error', function(err) {
-  console.log(decoder.write(err));
+  console.error(decoder.write(err));
 });
