@@ -1,3 +1,7 @@
+#!/usr/bin/env node
+
+'use strict';
+
 var program = require('commander');
 var StringDecoder = require('string_decoder').StringDecoder;
 var MixpanelExport = require('mixpanel-data-export');
@@ -7,10 +11,8 @@ function list(val) {
 }
 
 program
-  .option('-f, --from YYYY-MM-DD', 'From date (inclusive)',
-          /^\d{4}\/(0?[1-9]|1[012])\/(0?[1-9]|[12][0-9]|3[01])$/)
-  .option('-t, --to YYYY-MM-DD', 'To date (inclusive)',
-          /^\d{4}\/(0?[1-9]|1[012])\/(0?[1-9]|[12][0-9]|3[01])$/)
+  .option('-f, --from <YYYY-MM-DD>', 'From date (inclusive)')
+  .option('-t, --to <YYYY-MM-DD>', 'To date (inclusive)')
   .option('-e, --event <events>', 'Events that you wish to get data for, comma separated', list)
   .option('-w, --where [where]', 'An expression to filter events by (see Mixpanel expressions, https://goo.gl/IWaUH1)')
   .option('-b, --bucket [bucket]', 'The specific data bucket you would like to query')
@@ -36,13 +38,19 @@ var client = new MixpanelExport({
   api_secret: secret,
 });
 
-var stream = client.exportStream({
+var exportArgs = {
   from_date: program.from,
   to_date: program.to,
   event: program.event,
-  where: program.where,
-  bucket: program.bucket,
-});
+};
+if (program.where) {
+  exportArgs.where = program.where;
+}
+if (program.bucket) {
+  exportArgs.bucket = program.bucket;
+}
+
+var stream = client.exportStream(exportArgs);
 
 var decoder = new StringDecoder('utf8');
 
