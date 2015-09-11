@@ -1,4 +1,4 @@
-## mixpanel-export
+## Mixpanel Data Export Tool
 
 ### Install
 
