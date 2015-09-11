@@ -2,7 +2,7 @@
   "name": "mixpanel-export-cli",
   "version": "0.0.1",
   "description": "CLI for exporting mixpanel data.",
-  "main": "index.js",
+  "main": "mixpanel-export.js",
   "dependencies": {
     "commander": "^2.8.1",
     "mixpanel-data-export": "^1.8.2"
@@ -13,7 +13,7 @@
   },
   "preferGlobal": true,
   "bin": {
-    "mixpanel-export-cli": "index.js"
+    "mixpanel-export": "mixpanel-export.js"
   },
   "repository": {
     "type": "git",

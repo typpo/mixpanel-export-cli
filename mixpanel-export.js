@@ -11,6 +11,7 @@ function list(val) {
 }
 
 program
+  .usage('--from <YYYY-MM-DD> --to <YYYY-MM-DD> --event <events> [options]')
   .option('-f, --from <YYYY-MM-DD>', 'From date (inclusive)')
   .option('-t, --to <YYYY-MM-DD>', 'To date (inclusive)')
   .option('-e, --event <events>', 'Events that you wish to get data for, comma separated', list)
@@ -21,7 +22,8 @@ program
   .parse(process.argv);
 
 if (!program.from || !program.to || !program.event) {
-  console.error('from, to, and event parameters are required. Run with --help for more info.');
+  console.error('from, to, and event parameters are required.');
+  program.outputHelp();
   process.exit(1);
 }
 
