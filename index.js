@@ -54,17 +54,10 @@ var stream = client.exportStream(exportArgs);
 
 var decoder = new StringDecoder('utf8');
 
-// Listen on stream data
 stream.on('data', function(data) {
   console.log(decoder.write(data));
 });
 
-// Listen for a stream error
 stream.on('error', function(err) {
   console.log(decoder.write(err));
-});
-
-// Listen for the end of the stream
-stream.on('end', function() {
-  // move on to do other stuff
 });
