@@ -1,5 +1,9 @@
 ## Mixpanel Data Export Tool
 
+This is a command line tool that exports data from Mixpanel using the [Mixpanel Data Export API](https://mixpanel.com/docs/api-documentation/data-export-api).
+
+Per the Mixpanel Data Export API, output format is JSONL, ie. a JSON object on each line.
+
 ### Install
 
 `npm install -g mixpanel-export-cli`
@@ -23,4 +27,4 @@ Full details:
     -k, --key [key]          API key (defaults to env.MIXPANEL_API_KEY)
     -s, --secret [secret]    API secret (defaults to env.MIXPANEL_API_SECRET)
 
-You can set `MIXPANEL_API_KEY` and `MIXPANEL_API_SECRET` in your bashrc to avoid having to specify --key and --secret each time.
+Set `MIXPANEL_API_KEY` and `MIXPANEL_API_SECRET` in your environment to avoid having to specify --key and --secret each time.
